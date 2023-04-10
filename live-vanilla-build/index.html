@@ -1,101 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel='stylesheet' href='css/index.css'
+  </head>
+  <script
+    src="https://kit.fontawesome.com/0c72fa24ea.js"
+    crossorigin="anonymous"
+  ></script>
+  <title>Vanilla JS T3</title>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta
-            http-equiv="X-UA-Compatible"
-            content="IE=edge"
-        >
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        >
-        <link
-            rel='stylesheet'
-            href='css/index.css'
-            </head
-        >
-        <script
-            src="https://kit.fontawesome.com/0c72fa24ea.js"
-            crossorigin="anonymous"
-        ></script>
-        <title>Vanilla JS T3</title>
-
-    <body>
-        <main>
-            <div class='grid'>
-                <!-- Turn indicator -->
-                <div class='turn'>
-                    <i class='fa-solid fa-x'></i>
-                    <p>Player 1, you're up!</p>
-                </div>
-
-                <!-- Acion Menu -->
-                <div class='menu'>
-                    <button
-                        class='menu-btn'
-                        data-id="menu-button"
-                    >
-                        Actions
-                        <i class='fa-solid fa-chevron-down'></i>
-                    </button>
-                    <div
-                        class='items border hidden'
-                        data-id="menu-popover"
-                    >
-                        <button data-id="reset-btn">Reset</button>
-                        <button data-id="new-round-btn">New Round</button>
-                    </div>
-                </div>
-
-                <!-- Gameboard -->
-                <div class='square shadow'></div>
-                <div class='square shadow'></div>
-                <div class='square shadow'></div>
-                <div class='square shadow'></div>
-                <div class='square shadow'></div>
-                <div class='square shadow'></div>
-                <div class='square shadow'></div>
-                <div class='square shadow'></div>
-                <div class='square shadow'></div>
-
-                <!-- Scoreboard -->
-                <div
-                    class="score shadow"
-                    style="background-color: var(--turquoise)"
-                >
-                    <p>Player 1</p>
-                    <span>0 Wins</span>
-                </div>
-                <div
-                    class="score shadow"
-                    style="background-color: var(--light-gray)"
-                >
-                    <p>Ties</p>
-                    <span></span>
-                </div>
-                <div
-                    class="score shadow"
-                    style="background-color: var(--yellow)"
-                >
-                    <p>Player 2</p>
-                    <span>0 Wins</span>
-                </div>
-            </div>
-        </main>
-        <footer>
-            <p>Created by <a href='https://github.com/Jstevenson02'>Jacob Stevenson</a></p>
-            <p>Copyright © 2023</p>
-        </footer>
-
-        <!-- Modal that opens when game ends -->
-        <div class='modal hidden'>
-            <div class='modal-contents'>
-                <p>Player 1 wins!</p>
-                <button>Play again</button>
-            </div>
+  <body>
+    <main>
+      <div class="grid">
+        <!-- Turn indicator -->
+        <div class="turn">
+          <i class="fa-solid fa-x"></i>
+          <p>Player 1, you're up!</p>
         </div>
-    </body>
 
+        <!-- Acion Menu -->
+        <div class="menu" data-id="menu">
+          <button class="menu-btn" data-id="menu-button">
+            Actions
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="items border hidden" data-id="menu-items">
+            <button data-id="reset-btn">Reset</button>
+            <button data-id="new-round-btn">New Round</button>
+          </div>
+        </div>
+
+        <!-- Gameboard -->
+        <div id="1" class="square shadow" data-id="square"></div>
+        <div id="2" class="square shadow" data-id="square"></div>
+        <div id="3" class="square shadow" data-id="square"></div>
+        <div id="4" class="square shadow" data-id="square"></div>
+        <div id="5" class="square shadow" data-id="square"></div>
+        <div id="6" class="square shadow" data-id="square"></div>
+        <div id="7" class="square shadow" data-id="square"></div>
+        <div id="8" class="square shadow" data-id="square"></div>
+        <div id="9" class="square shadow" data-id="square"></div>
+
+        <!-- Scoreboard -->
+        <div class="score shadow" style="background-color: var(--turquoise)">
+          <p>Player 1</p>
+          <span>0 Wins</span>
+        </div>
+        <div class="score shadow" style="background-color: var(--light-gray)">
+          <p>Ties</p>
+          <span></span>
+        </div>
+        <div class="score shadow" style="background-color: var(--yellow)">
+          <p>Player 2</p>
+          <span>0 Wins</span>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>
+        Created by <a href="https://github.com/Jstevenson02">Jacob Stevenson</a>
+      </p>
+      <p>Copyright © 2023</p>
+    </footer>
+
+    <!-- Modal that opens when game ends -->
+    <div class="modal hidden">
+      <div class="modal-contents">
+        <p>Player 1 wins!</p>
+        <button>Play again</button>
+      </div>
+    </div>
+
+    <script src="js/App.js" />
+  </body>
 </html>

@@ -1,3 +1,5 @@
+import View from "./view.js";
+
 const App = {
   $: {
     menu: document.querySelector('[data-id="menu"]'),
@@ -143,4 +145,25 @@ const App = {
   },
 };
 
-window.addEventListener("load", App.init);
+// window.addEventListener("load", App.init);
+
+function init() {
+  const view = new View();
+
+  view.bindGameResetEvent((event) => {
+    console.log("Reset");
+    console.log(event);
+  });
+
+  view.bindNewRoundEvent((event) => {
+    console.log("New Round");
+    console.log(event);
+  });
+
+  view.bindPlayerMoveEvent((event) => {
+    console.log("Player Moved");
+    console.log(event);
+  });
+}
+
+window.addEventListener("load", init);

@@ -1,3 +1,4 @@
+import Store from "./store.js";
 import View from "./view.js";
 
 const App = {
@@ -145,10 +146,24 @@ const App = {
   },
 };
 
-// window.addEventListener("load", App.init);
+const players = [
+  {
+    id: 1,
+    name: "Player 1",
+    iconClass: "fa-x",
+    colorClass: "yellow",
+  },
+  {
+    id: 2,
+    name: "Player 2",
+    iconClass: "fa-o",
+    colorClass: "turquoise",
+  },
+];
 
 function init() {
   const view = new View();
+  const store = new Store(players);
 
   view.bindGameResetEvent((event) => {
     console.log("Reset");
@@ -161,8 +176,16 @@ function init() {
   });
 
   view.bindPlayerMoveEvent((event) => {
-    console.log("Player Moved");
-    console.log(event);
+    const clickedSquare = event.target;
+
+    // Place an icon of the current player in a square
+    view.handlePlayerMove(clickedSquare, store.game.currentPlayer);
+
+    // Advance to the next state by pushing a move to the move array
+    store.playerMove(+clickedSquare.id);
+
+    // Set the turn indicator to the next player
+    view.setTurnIndicator(store.game.currentPlayer);
   });
 }
 

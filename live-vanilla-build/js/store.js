@@ -1,20 +1,20 @@
-const initialvalue = {
+const initialValue = {
   moves: [],
 };
 
 export default class Store {
-  #state = initialvalue;
+  #state = initialValue;
 
   constructor(players) {
     this.players = players;
   }
 
   get game() {
-    // const state = this.#getState;
-    // const currentPlayer = this.players[state.moves.length % 2];
-    // return {
-    //   currentPlayer,
-    // };
+    const state = this.#getState();
+    const currentPlayer = this.players[state.moves.length % 2];
+    return {
+      currentPlayer,
+    };
   }
 
   playerMove(squareId) {

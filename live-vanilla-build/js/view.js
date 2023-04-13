@@ -59,7 +59,7 @@ export default class View {
     const icon = document.createElement("i");
     const label = document.createElement("p");
 
-    icon.classList.add("fa-solid", player.iconClass, player.iconClass);
+    icon.classList.add("fa-solid", player.iconClass, player.colorClass);
 
     label.classList.add(player.colorClass);
     label.innerText = `${player.name}, you're up!`;

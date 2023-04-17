@@ -166,8 +166,11 @@ function init() {
   const store = new Store(players);
 
   view.bindGameResetEvent((event) => {
-    console.log("Reset");
-    console.log(event);
+    view.closeModal();
+
+    store.reset();
+
+    view.setTurnIndicator(store.game.currentPlayer);
   });
 
   view.bindNewRoundEvent((event) => {
@@ -175,14 +178,31 @@ function init() {
     console.log(event);
   });
 
-  view.bindPlayerMoveEvent((event) => {
-    const clickedSquare = event.target;
+  view.bindPlayerMoveEvent((square) => {
+    const existingMove = store.game.moves.find(
+      (move) => move.squareId === +square.id
+    );
+
+    if (existingMove) {
+      return;
+    }
 
     // Place an icon of the current player in a square
-    view.handlePlayerMove(clickedSquare, store.game.currentPlayer);
+    view.handlePlayerMove(square, store.game.currentPlayer);
 
     // Advance to the next state by pushing a move to the move array
-    store.playerMove(+clickedSquare.id);
+    store.playerMove(+square.id);
+
+    // Check for winner
+    if (store.game.status.isComplete) {
+      view.openModal(
+        store.game.status.winner
+          ? `${store.game.status.winner.name} wins!`
+          : "Tie!"
+      );
+
+      return;
+    }
 
     // Set the turn indicator to the next player
     view.setTurnIndicator(store.game.currentPlayer);

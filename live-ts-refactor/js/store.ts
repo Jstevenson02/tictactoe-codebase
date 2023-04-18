@@ -90,11 +90,11 @@ export default class Store extends EventTarget {
   reset() {
     const stateClone = structuredClone(this.#getState());
 
-    const { status, moves } = this.game;
+    const { status, currentGameMoves } = this.game;
 
     if (status.isComplete) {
       stateClone.history.currentRoundGames.push({
-        moves,
+        currentGameMoves,
         status,
       });
     }

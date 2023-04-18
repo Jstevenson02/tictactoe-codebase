@@ -67,7 +67,7 @@ export default class Store extends EventTarget {
     }
 
     return {
-      currentGameMoves: state.currentGameMoves,
+      moves: state.currentGameMoves,
       currentPlayer,
       status: {
         isComplete: winner != null || state.currentGameMoves.length === 9,
@@ -90,11 +90,11 @@ export default class Store extends EventTarget {
   reset() {
     const stateClone = structuredClone(this.#getState());
 
-    const { status, currentGameMoves } = this.game;
+    const { status, moves } = this.game;
 
     if (status.isComplete) {
       stateClone.history.currentRoundGames.push({
-        currentGameMoves,
+        moves,
         status,
       });
     }

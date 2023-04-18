@@ -1,6 +1,9 @@
+import type { Game } from "./types";
+import type Store from "./store";
+
 export default class View {
-  $ = {};
-  $$ = {};
+  $: Record<string, Element> = {};
+  $$: Record<string, NodeListOf<Element>> = {};
 
   constructor() {
     this.$.menu = this.#qs('[data-id="menu"]');
@@ -25,10 +28,10 @@ export default class View {
     });
   }
 
-  render(game, stats) {
+  render(game: Store["game"], stats: Store["stats"]) {
     const { playerWithStats, ties } = stats;
     const {
-      currentGameMoves,
+      moves,
       currentPlayer,
       status: { isComplete, winner },
     } = game;
@@ -40,7 +43,7 @@ export default class View {
       playerWithStats[1].wins,
       ties
     );
-    this.#initializeMoves(currentGameMoves);
+    this.#initializeMoves(moves);
 
     if (isComplete) {
       this.#openModal(winner ? `${winner.name} wins!` : "Tie!");
@@ -142,7 +145,7 @@ export default class View {
     this.$.turn.replaceChildren(icon, label);
   }
 
-  #qs(selector, parent) {
+  #qs(selector: string, parent?: Element) {
     const el = parent
       ? parent.querySelector(selector)
       : document.querySelector(selector);
@@ -154,7 +157,7 @@ export default class View {
     return el;
   }
 
-  #qsAll(selector) {
+  #qsAll(selector: string) {
     const el = document.querySelectorAll(selector);
 
     if (!el) {

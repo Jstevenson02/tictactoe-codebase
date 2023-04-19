@@ -1,5 +1,5 @@
 import type { Move, Player } from "./types";
-import type Store from "./store";
+import type Store from "./store.js";
 
 export default class View {
   $: Record<string, Element> = {};

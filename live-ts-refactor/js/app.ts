@@ -1,7 +1,8 @@
 import Store from "./store";
+import { Player } from "./types";
 import View from "./view";
 
-const players = [
+const players: Player[] = [
   {
     id: 1,
     name: "Player 1",
@@ -42,7 +43,7 @@ function init() {
   });
 
   view.bindPlayerMoveEvent((square) => {
-    const existingMove = store.game.currentGameMoves.find(
+    const existingMove = store.game.moves.find(
       (move) => move.squareId === +square.id
     );
 

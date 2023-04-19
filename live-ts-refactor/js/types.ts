@@ -17,7 +17,7 @@ export type Game = {
 
 export type GameStatus = {
   isComplete: boolean;
-  winner: Player;
+  winner: Player | null;
 };
 
 export type GameState = {
